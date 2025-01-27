@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>主 页</title>
+		<link rel="stylesheet" href="css/Home.css" />
+		<script src = "js/vue.js"></script>
+		<script src="js/iconfont.js"></script>
+
+	</head>
+	<body>
+		
+		<div class="info">
+			<div class="Panel" id="UserService">
+				<svg class="iconPic" aria-hidden="true">
+					<use xlink:href="#icon-nanshi"></use>
+<!--					<use xlink:href="#icon-nvshi"></use>-->
+				</svg>
+				<div>
+<!--					<label>昵 称:</label>-->
+					<svg class="iconInfo" aria-hidden="true">
+						<use xlink:href="#icon-xingming"></use>
+					</svg>
+					<label class="viewMode" for="username"> {{username}}</label>
+					<input class="updateMode" type="text" id="username" v-model="username" required />
+				</div>
+				<div>
+<!--					<label>邮 箱:</label>-->
+					<svg class="iconInfo" aria-hidden="true">
+						<use xlink:href="#icon-youxiang"></use>
+					</svg>
+					<label class="viewMode" for="email"> {{email}}</label>
+					<input class="updateMode" type="email" id="email" v-model="email" required />
+				</div>
+				<div>
+<!--					<label>密 码:</label>-->
+					<svg class="iconInfo" aria-hidden="true">
+						<use xlink:href="#icon-mima"></use>
+					</svg>
+					<label class="viewMode" for="password"><b> · · · · · · · · · · · · · ·</b> </label>
+					<input class="updateMode" type="text" id="password" v-model="password" required />
+				</div>
+
+				<svg class="updatebtn" aria-hidden="true" id="updateInfo" @click="update()">
+					<use xlink:href="#icon-bianji" ></use>
+				</svg>
+				<svg class="savebtn" aria-hidden="true" id="saveInfo" @click="save()">
+					<use xlink:href="#icon-baocun"></use>
+				</svg>
+
+			</div>
+
+			<div class="Panel" id="CategoryService">
+				<table class="categoryTable">
+					<thead>
+					<tr>
+						<th>类别</th>
+						<th>颜色</th>
+						<th colspan="2">操作</th>
+					</tr>
+					</thead>
+					<tbody>
+<!--					<tr>-->
+<!--						<td>-->
+<!--							<input class="cname" type="text" value="1234" required />-->
+<!--						</td>-->
+<!--						<td>-->
+<!--							<input class="ccolor" type="color"  value="1234" required />-->
+<!--						</td>-->
+<!--						<td>-->
+<!--							<button @click="updateCategory(item)">提交</button>-->
+<!--						</td>-->
+<!--						<td>-->
+<!--							<svg class="Delicon" aria-hidden="true" @click="deleteCategory(item)">-->
+<!--								<use xlink:href="#icon-shanchu"></use>-->
+<!--							</svg>-->
+<!--						</td>-->
+<!--					</tr>-->
+
+<!-- 渲染已有分类 -->
+					<tr v-for="(item, index) in categoryList" :key="item.categoryid">
+						<td>
+							<input class="cname" type="text" v-model="item.classname" required />
+						</td>
+						<td>
+							<input class="ccolor" type="color" v-model="item.color" required />
+						</td>
+						<td>
+							<button @click="updateCategory(item)">提交</button>
+						</td>
+						<td>
+							<svg class="Delicon" aria-hidden="true" @click="deleteCategory(item)">
+								<use xlink:href="#icon-shanchu"></use>
+							</svg>
+						</td>
+					</tr>
+
+					<tr v-if="categoryList.length === 0">
+						<td colspan="4" style="text-align: center">
+								暂 无 类 别
+						</td>
+					</tr>
+					<!-- 新建分类行 -->
+					<tr v-if="showNewCategoryRow">
+						<td>
+							<input class="cname" type="text" v-model="newCategory.classname" required />
+						</td>
+						<td>
+							<input class="ccolor" type="color" v-model="newCategory.color" required />
+						</td>
+						<td>
+							<button @click="saveCategory()">保存</button>
+						</td>
+						<td>
+							<button @click="cancelAddCategory()">取消</button>
+						</td>
+					</tr>
+
+					<!-- 添加类别按钮 -->
+					<tr v-if="categoryList.length >= 0">
+						<td colspan="4"  style="text-align: center">
+							<div>
+								<button id="addCategorybtn" @click="addCategory()"> 添 加 类 别 </button>
+							</div>
+						</td>
+					</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="Panel" id="TaskService">
+			<div class="taskSearch">
+				<div> 任 务 列 表 </div>
+				<input type="text" id="searchTask" v-model="searchKey" placeholder="搜索任务" />
+
+				<svg class="iconSearch" aria-hidden="true"  @click="changePage('home')">
+					<use xlink:href="#icon-sousuo"></use>
+				</svg>
+
+<!--				<button>搜索</button>-->
+			</div>
+			<ul class="taskList">
+				<li v-for="(item, index) in taskList" :key="item.taskid">
+					<div class="taskListdiv">
+						<div :style="{ backgroundColor: getCategoryInfo(item.categoryid).color }" class="taskColor"></div>
+						<div class="taskRP">
+							<div class="taskTitle">{{ item.title }}</div>
+							<div class="taskInfo">
+								<span class="taskCategory">类别:{{ getCategoryInfo(item.categoryid).classname }}</span>
+								<svg class="iconTime" aria-hidden="true">
+									<use xlink:href="#icon-shijianzhouqi"></use>
+								</svg>
+								<span class="taskTime">{{ item.tasktime }}</span>
+							</div>
+						</div>
+						<div>
+							<svg class="iconSet" aria-hidden="true" @click="showUpdateTask(item.taskid)">
+								<use xlink:href="#icon-bianji"></use>
+							</svg>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="taskBottom">
+				<span @click="changePage('home')">首页</span>
+				<span @click="changePage('prev')">上一页</span>
+				<span @click="changePage('next')">下一页</span>
+				<span @click="changePage('end')">末页</span>
+				<svg class="iconAdd" aria-hidden="true" onclick="showCreateTask()">
+					<use xlink:href="#icon-tianjia"></use>
+				</svg>
+
+			</div>
+
+
+			<div class="taskPanel" id="createTask">
+				<h1>创建任务</h1>
+				<form id="taskForm" >
+					<div>
+						<label for="taskTitle">标题:</label>
+						<input type="text" id="taskTitle" name="taskTitle" v-model="title" required />
+					</div>
+					<div>
+						<label for="taskContent">内容:</label>
+						<textarea id="taskContent" name="taskContent" v-model="text" required></textarea>
+					</div>
+					<div>
+						<label for="taskCategory">任务类别:</label>
+						<select id="taskCategory" name="taskCategory" v-model="categoryid" required>
+							<option value="">请选择类别</option>
+							<option v-for="item in categories" :value="item.categoryid" >{{ item.classname }}</option>
+						</select>
+					</div>
+					<div>
+						<label for="taskTime">任务时间:</label>
+						<input type="datetime-local" id="taskTime" name="taskTime" v-model="tasktime" />
+					</div>
+					<div>
+						<button type="submit" @click="createTask()">创建</button>
+						<button type="button" onclick="closeCreateTask()">取消</button>
+					</div>
+				</form>
+			</div>
+			<div class="taskPanel" id="updateTask">
+				<h1>修改任务</h1>
+				<form id="updateTaskForm" >
+					<div>
+						<label for="taskTitle">标题:</label>
+						<input type="text" id="updateTaskTitle" name="taskTitle"  v-model="title" required />
+					</div>
+					<div>
+						<label for="taskContent">内容:</label>
+						<textarea id="updateTaskContent" name="taskContent" v-model="text" required></textarea>
+					</div>
+					<div>
+						<label for="taskCategory">任务类别:</label>
+						<select id="updateTaskCategory" name="taskCategory" v-model="categoryid" required>
+							<option value="">请选择类别</option>
+							<option v-for="item in categories" :value="item.categoryid">{{ item.classname }}</option>
+						</select>
+					</div>
+					<div>
+						<label for="taskTime">任务时间:</label>
+						<input type="datetime-local" id="updateTaskTime" v-model="tasktime" name="taskTime" />
+					</div>
+					<div>
+						<button type="submit" @click="updateTask()">保存</button>
+						<button type="button" @click="deleteTask()">删除</button>
+						<button type="button" onclick="closeUpdateTask()">取消</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+		<div id="message" class="error" style="display:none;">
+
+		</div>
+
+		<div id="overlay"></div>
+
+		<script src = "js/userService.js"></script>
+		<script src = "js/CategoryService.js"></script>
+		<script src = "js/TaskService.js"></script>
+
+
+		<script>
+			function showCreateTask() {
+				var taskPanel = document.getElementById("createTask");
+				taskPanel.style.display = "block";
+				var overlay = document.getElementById("overlay");
+				overlay.style.display = "block";
+			}
+			function closeCreateTask() {
+				var taskPanel = document.getElementById("createTask");
+				taskPanel.style.display = "none";
+				var overlay = document.getElementById("overlay");
+				overlay.style.display = "none";
+			}
+			function closeUpdateTask() {
+				var taskPanel = document.getElementById("updateTask");
+				taskPanel.style.display = "none";
+				var overlay = document.getElementById("overlay");
+				overlay.style.display = "none";
+			}
+		</script>
+	</body>
+</html>

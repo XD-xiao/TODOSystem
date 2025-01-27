@@ -1,0 +1,539 @@
+body{
+	 width: 100%;
+	height: 100%;
+	background-color: #f0ebe4;
+	position: absolute;
+	
+	display: flex;
+	padding: 0;
+	margin: 0;
+}
+
+.info{
+	width: 600px;
+	height: 93%;
+	display: block;
+	/*padding: 10px;*/
+	margin-left: 10px;
+	/*background-color: aqua;*/
+}
+/***************************************************/
+#UserService{
+	width: 100%;
+	height: 60%;
+	margin-top: 20px;
+	background-color: #f1e3aa;
+	border-radius: 20px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+	position: relative;
+
+}
+.iconPic{
+	display: block;
+	margin: auto;
+}
+.iconInfo{
+	width: 40px;
+	height: 40px;
+	/*margin-left: 80px;*/
+}
+#updateInfo{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	right: 10px;
+	bottom: 10px;
+	border-radius: 5px;
+	/**/
+	fill: red;
+	/*display: none;*/
+}
+#updateInfo:hover{
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+
+#saveInfo{
+	position: absolute;
+	width: 33px;
+	height: 33px;
+	right: 8px;
+	bottom: 8px;
+	border-radius: 5px;
+	display: none;
+}
+#saveInfo:hover{
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+#UserService div{
+	width: 300px;
+	font-size: 15px;
+	margin-top: 20px;
+	margin-left: 80px;
+	/*background-color: #f08a5d;*/
+	position: relative;
+}
+#UserService div label{
+	height: 100%;
+	margin-left: 20px;
+	position: absolute;
+	top: 70%;
+	transform: translateY(-50%);
+}
+
+#UserService div input{
+	height: 22px;
+	margin-left: 20px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+
+	background: transparent; /* 设置背景为透明 */
+	border: none;            /* 去除边框 */
+	padding: 5px;            /* 根据需要调整内边距 */
+	box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); /* 内部阴影 */
+	outline: none;           /* 可选：移除元素聚焦时的轮廓 */
+	border-radius: 8px;
+}
+#UserService div input:hover{
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* 内部阴影 */
+}
+
+.updateMode{
+	display: none;
+}
+
+/******************************************************************************/
+#CategoryService{
+	width: 100%;
+	height: 40%;
+	margin-top: 18px;
+	background-color: #f1e3aa;
+	border-radius: 20px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+	overflow: auto;
+	-ms-overflow-style: none;  /* Internet Explorer 10+ */
+	scrollbar-width: none;     /* Firefox */
+}
+#CategoryService::-webkit-scrollbar {
+	display: none; /* WebKit/Blink browsers */
+}
+.categoryTable{
+	margin-left: auto;
+	margin-right: auto;
+}
+.categoryTable td{
+	padding: 10px;
+}
+.categoryTable input{
+	background: transparent; /* 设置背景为透明 */
+	border: none;            /* 去除边框 */
+
+	box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); /* 内部阴影 */
+	outline: none;           /* 可选：移除元素聚焦时的轮廓 */
+	border-radius: 4px;
+}
+.categoryTable input:hover{
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* 内部阴影 */
+}
+.categoryTable tr td button{
+	background-color: #59b3ff;
+	border-radius: 4px;
+	border: none;            /* 去除边框 */
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* 内部阴影 */
+}
+
+.categoryTable tr td button:hover{
+	cursor: pointer;
+}
+.cname{
+	width: 100px;
+	padding: 5px;
+}
+.ccolor{
+	padding: 2px;
+}
+.Delicon{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+#addCategorybtn{
+	width: 200px;
+}
+
+/******************************************************************************/
+#TaskService{
+	width: 100%;
+	height: 95%;
+	/*padding: 10px;*/
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-right: 30px;
+	background-color: #f1e3aa;
+	border-radius: 20px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+	display: block;
+
+
+	position: relative;
+}
+.taskSearch{
+	width: 94%;
+	height: 66px;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #f08a5d;
+	display: flex;
+	font-size: 30px;
+	border-radius: 9px;
+	align-items: center;
+	justify-content: space-between; /* 子元素之间的空间分配 */
+}
+.taskSearch div{
+	margin-left: 20px;
+	width: 72%;
+}
+.taskSearch input{
+	width: 220px;
+	height: 34px;
+	padding: 5px;
+
+	background: transparent; /* 设置背景为透明 */
+	border: none;            /* 去除边框 */
+
+	box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); /* 内部阴影 */
+	outline: none;           /* 可选：移除元素聚焦时的轮廓 */
+	border-radius: 4px;
+}
+.taskSearch input:hover{
+	box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.5); /* 内部阴影 */
+}
+.iconSearch{
+	width: 30px;
+	height: 30px;
+	margin-right: 14px;
+	border-radius: 4px;
+	padding: 5px;
+	border: none;
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+	background-color:#f38181;
+	cursor: pointer;
+}
+.iconSearch:hover{
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+.iconSearch:active{
+	box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+
+.taskList{
+	width: 94%;
+	margin-top: 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	list-style-type: none;
+	align-items: center;
+	padding: 0;
+}
+#TaskService ul li{
+	background-color: #f8d030;
+
+	width: 96%;
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+
+	display: flex;
+	font-size: 30px;
+	border-radius: 9px;
+	align-items: center;
+
+}
+.taskListdiv{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	/*background-color: #ff2468;*/
+}
+.taskColor{
+	width: 60px;
+	height: 80px;
+	border-radius: 9px;
+	background-color: #b83b5e;
+}
+.taskRP{
+	width: 100%;
+	margin-left: 30px;
+	border-radius: 9px;
+	/*background-color: #59b3ff;*/
+}
+.taskTitle{
+	display: block;
+}
+.taskInfo{
+	width: 90%;
+	height: 50%;
+	display: flex;
+	font-size: 20px;
+	align-items: center;
+	/*background-color: #59b3ff;*/
+}
+.taskCategory{
+	width: 200px;
+	/*background-color: #ff5959;*/
+}
+.taskTime{
+	width: 200px;
+	/*background-color: #ff5959;*/
+}
+
+
+.taskBottom{
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	bottom: 0;
+	border-radius: 20px;
+
+	display: flex;
+	justify-content: center; /* 水平居中 */
+	align-items: center;     /* 垂直居中（如果容器有足够高度） */
+	/*background-color: #59b3ff;*/
+}
+.taskBottom span{
+	margin: 0 10px;
+}
+.taskBottom span:hover{
+	cursor: pointer;
+	color: #b83b5e;
+}
+
+.iconTime{
+	width: 25px;
+	height: 25px;
+	/*background-color: #b83b5e;*/
+}
+.iconSet{
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+.iconAdd{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	right: 5px;
+	border-radius: 40px;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+.iconAdd:hover{
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	border-radius: 40px;
+	cursor: pointer;
+}
+.iconAdd:active{
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* 遮罩层样式 ******************************************************************/
+#overlay {
+	display: none; /* 默认不显示 */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+	z-index: 999; /* 确保遮罩层在页面内容之上，但在弹窗之下 */
+}
+
+
+
+/* 设置整体布局和背景 */
+.taskPanel {
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	width: 360px; /* 或者根据需要调整宽度 */
+	padding: 20px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+
+}
+
+/* 设置标题样式 */
+.taskPanel h1 {
+	font-size: 1.5em;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+/*********** 设置表单字段通用样式 */
+#taskForm div {
+	margin-bottom: 15px;
+}
+
+/* 设置标签和输入框间距 */
+#taskForm label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+#taskForm input[type="text"],
+#taskForm textarea,
+#taskForm select {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+/* 设置时间选择器样式 */
+#taskForm input[type="datetime-local"] {
+	width: 100%; /* 确保日期时间选择器占满整个容器宽度 */
+}
+
+/* 设置按钮样式 */
+#taskForm button {
+	padding: 10px 15px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+#taskForm button[type="submit"] {
+	background-color: #28a745;
+	color: white;
+	border: none;
+}
+
+#taskForm button[type="button"] {
+	background-color: #dc3545;
+	color: white;
+	border: none;
+}
+
+/* 悬停效果 */
+#taskForm button:hover {
+	opacity: 0.9;
+}
+#createTask{
+	display: none;
+}
+
+
+
+/*****************/
+#updateTask{
+	display: none;
+}
+
+/* 设置表单字段通用样式 */
+#updateTaskForm div {
+	margin-bottom: 15px;
+}
+
+/* 设置标签和输入框间距 */
+#updateTaskForm label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+#updateTaskForm input[type="text"],
+#updateTaskForm textarea,
+#updateTaskForm select {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+/* 设置时间选择器样式 */
+#updateTaskForm input[type="datetime-local"] {
+	width: 100%; /* 确保日期时间选择器占满整个容器宽度 */
+}
+
+/* 设置按钮样式 */
+#updateTaskForm button {
+	padding: 10px 15px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+#updateTaskForm button[type="submit"] {
+	background-color: #28a745;
+	color: white;
+	border: none;
+}
+
+#updateTaskForm button[type="button"] {
+	background-color: #dc3545;
+	color: white;
+	border: none;
+}
+
+/* 悬停效果 */
+#updateTaskForm button:hover {
+	opacity: 0.9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*如果浏览器宽度小于800px，则隐藏info*/
+@media screen and (max-width: 800px) {
+	.info{
+		display: none;
+	}
+}
+
+
+#message{
+	/* width: 300px; */
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 30px;
+	padding-right: 30px;
+	height: 30px;
+	text-align: center;
+	font-size: 20px;
+	left: 50%; /* 距离左边50% */
+	transform: translate(-50%, -50%); /* 将弹窗自身向左上角移动自身宽度高度的一半 */
+	position: fixed;
+	top: 50px; /* 距离顶部50% */
+
+}
+
+.success {
+	background-color: #d4edda;
+	color: #155724;
+	border: 1px solid #c3e6cb;
+}
+
+.error {
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid #f5c6cb;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登 录</title>
+		<link rel="stylesheet" href="css/Login.css" />
+		<script src = "js/vue.js"></script>
+		<script src="js/iconfont.js"></script>
+		
+		
+		
+	</head>
+	<body>
+		
+		<div  id="UserService">
+			<div class="loginPanel" v-if="currentPanel === 'login'">
+				<h1>登 录</h1>
+				<form @submit.prevent="login">
+					<div>
+						<label for="email">邮 箱:</label>
+						<input type="email"  v-model="email" required />
+					</div>
+					<div>
+						<label for="password">密 码:</label>
+						<input type="password"  v-model="password" required />
+					</div>
+					<button type="submit">登 录</button>
+				</form>
+				
+				<div class="goRegister"  @click="showPanel('register')">
+					去注册 →
+				</div>
+				
+			</div>
+
+			<div class="registerPanel" v-if="currentPanel === 'register'">
+				
+				<h1>注 册</h1>
+				<form @submit.prevent="register">
+				    <div>
+				        <label for="username">昵 称:</label>
+				        <input type="text" id="username" v-model="username" required />
+				    </div>
+				    <div>
+				        <label for="email">邮 箱:</label>
+				        <input type="email" id="email" v-model="email" required />
+				    </div>
+				    <div>
+				        <label for="password">密 码:</label>
+				        <input type="password" id="password" v-model="password" required />
+				    </div>
+				    <div>
+				        <label>头 像:</label>
+				        <span>
+				            <input type="radio" id="picid_1" value="1" v-model="picid" required />
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-nanshi"></use>
+							</svg>
+
+				        </span>
+				        <span>
+				            <input type="radio" id="picid_2" value="2" v-model="picid" required />
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-nvshi"></use>
+							</svg>
+				        </span>
+				    </div>
+				    <button type="submit">注 册</button>
+				</form>
+				
+				<div class="goLogin"  @click="showPanel('login')">
+					← 去登录
+				</div>
+			</div>
+		</div>
+		
+		<div id="message" class="error" style="display:none;">
+
+		</div>
+		
+		<script src = "js/userService.js"></script>
+
+		
+	</body>
+</html>
