@@ -8,9 +8,9 @@ import java.util.Properties;
 
 public class EmailUtil {
 
-    private String fromEmail = "";  // 发送邮件的邮箱地址
+    private String fromEmail = "2822334610@qq.com";
 
-    private String emailPassword = "";  // 邮箱的SMTP密码
+    private String emailPassword = "jtmlbgkzxjvkdfhi";
 
     public void sendEmail(String toEmail, String subject, String body) {
         // QQ邮箱SMTP服务器地址
@@ -18,7 +18,7 @@ public class EmailUtil {
 
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", "465"); // 邮箱SMTP端口
+        props.put("mail.smtp.port", "465"); // QQ邮箱SMTP端口
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.ssl.enable", "true");
 

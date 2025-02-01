@@ -17,35 +17,26 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public boolean createCategory(Category category) {
-        try {
-            categoryMapper.insertCategory(category);
-            return true;
-        } catch (Exception e) {
-//            e.printStackTrace();
-            return false;
-        }
+
+        categoryMapper.insertCategory(category);
+        return true;
+
     }
 
     @Override
     public boolean deleteCategory(int categoryid) {
-        try {
-            categoryMapper.deleteCategory(categoryid);
-            return true;
-        } catch (Exception e) {
-//            e.printStackTrace();
-            return false;
-        }
+
+        categoryMapper.deleteCategory(categoryid);
+        return true;
+
     }
 
     @Override
     public boolean updateCategory(Category category) {
-        try {
-            categoryMapper.updateCategory(category);
-            return true;
-        } catch (Exception e) {
-//            e.printStackTrace();
-            return false;
-        }
+
+        categoryMapper.updateCategory(category);
+        return true;
+
     }
 
     @Override

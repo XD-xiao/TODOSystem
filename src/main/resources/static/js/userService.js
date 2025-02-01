@@ -83,7 +83,7 @@ const userService = new Vue({
 					}, 1000);
 				} else {
 					console.error('Login failed:', response.msg);
-					this.showMessage('登录失败:', false);
+					this.showMessage('登录失败(' + response.msg + ')' , false);
 				}
 			});
 		},
@@ -127,7 +127,7 @@ const userService = new Vue({
 					this.showMessage('注册成功', true);
 				} else {
 					// console.error('Registration failed:', response.msg);
-					this.showMessage('注册失败:', false);
+					this.showMessage('注册失败(' + response.msg + ')', false);
 				}
 			});
 		},
@@ -207,7 +207,7 @@ const userService = new Vue({
 
 				} else {
 					// console.error('Registration failed:', response.msg);
-					this.showMessage('修改失败:', false);
+					this.showMessage('修改失败(' + response.msg + ')', false);
 				}
 			});
 
@@ -244,7 +244,7 @@ const userService = new Vue({
 
 				} else {
 					// console.error('Registration failed:', response.msg);
-					this.showMessage('信息获取失败:', false);
+					this.showMessage('信息获取失败(' + response.msg + ')', false);
 				}
 			});
 		}

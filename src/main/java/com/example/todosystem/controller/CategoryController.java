@@ -28,14 +28,10 @@ public class CategoryController {
         Integer userID = (Integer) claims.get("id");
         Category category = new Category(userID,categoryRequest.getClassname(),categoryRequest.getColor());
 
-        if(categoryService.createCategory(category))
-        {
-            return Result.success("添加成功");
-        }
-        else
-        {
-            return Result.error("添加失败");
-        }
+        categoryService.createCategory(category);
+
+        return Result.success("添加成功");
+
     }
 
     @PostMapping("deleteCategory")
@@ -52,14 +48,9 @@ public class CategoryController {
         else if(!Objects.equals(category.getUserid(), userID))
             return Result.error("没有权限");
 
-        if(categoryService.deleteCategory(categoryRequest.getCategoryid()))
-        {
-            return Result.success();
-        }
-        else
-        {
-            return Result.error("删除失败");
-        }
+        categoryService.deleteCategory(categoryRequest.getCategoryid());
+
+        return Result.success();
     }
 
     @PostMapping("updateCategory")
@@ -76,14 +67,9 @@ public class CategoryController {
         if(!Objects.equals(categoryRequest.getUserid(), userID))
             return Result.error("没有权限");
 
-        if(categoryService.updateCategory(category))
-        {
-            return Result.success();
-        }
-        else
-        {
-            return Result.error("更新失败");
-        }
+        categoryService.updateCategory(category);
+        return Result.success();
+
     }
 
     @PostMapping("getCategory")

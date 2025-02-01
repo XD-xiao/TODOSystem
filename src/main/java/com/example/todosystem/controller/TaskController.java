@@ -41,31 +41,26 @@ public class TaskController {
         }
 
         System.out.println(task);
-        if (taskService.createTask(task)) {
-            return Result.success( "添加成功");
-        } else {
-            return Result.error("添加失败");
-        }
+
+        taskService.createTask(task);
+        return Result.success( "添加成功");
+
     }
 
     @PostMapping("deleteTask")
     public Result deleteTask(@RequestBody TaskRequest taskRequest) {
-        if (taskService.deleteTask(taskRequest.getTaskid())) {
-            return Result.success( "删除成功");
-        } else {
-            return Result.error("删除失败");
-        }
+        taskService.deleteTask(taskRequest.getTaskid());
+        return Result.success( "删除成功");
+
     }
 
     @PostMapping("updateTask")
     public Result updateTask(@RequestBody TaskRequest taskRequest) {
         Task task = new Task(taskRequest.getTaskid(), taskRequest.getUserid(), taskRequest.getTitle(), taskRequest.getText(), taskRequest.getTasktime(), taskRequest.getCategoryid(), LocalDateTime.now());
 
-        if (taskService.updateTask(task)) {
-            return Result.success( "修改成功");
-        } else {
-            return Result.error("修改失败");
-        }
+        taskService.updateTask(task);
+        return Result.success( "修改成功");
+
     }
 
     @PostMapping("getTask")

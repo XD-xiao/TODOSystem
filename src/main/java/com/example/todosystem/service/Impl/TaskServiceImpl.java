@@ -18,36 +18,24 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public boolean createTask(Task task) {
-        try{
-            taskMapper.insertTask(task);
-            return true;
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-
+        taskMapper.insertTask(task);
+        return true;
     }
 
     @Override
     public boolean deleteTask(int taskid) {
-        try{
-            taskMapper.deleteTask(taskid);
-            return true;
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
+
+        taskMapper.deleteTask(taskid);
+        return true;
+
     }
 
     @Override
     public boolean updateTask(Task task) {
-        try{
-            taskMapper.updateTask(task);
-            return true;
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
+
+        taskMapper.updateTask(task);
+        return true;
+
     }
 
     @Override

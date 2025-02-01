@@ -14,34 +14,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean register(User user) {
-        try{
-            userMapper.insertUser(user);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+
+        userMapper.insertUser(user);
+        return true;
+
     }
 
     @Override
     public boolean delete(Integer id) {
-        try{
-            userMapper.deleteUser(id);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+
+        userMapper.deleteUser(id);
+        return true;
+
     }
 
     @Override
     public boolean update(User user) {
-        try{
-            userMapper.updateUser(user);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        userMapper.updateUser(user);
+        return true;
     }
 
     @Override
@@ -51,15 +41,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(User user) {
-        try{
-            User resUser = userMapper.getUserByEmailAndPassword(user);
-            if (resUser != null) {
-                return resUser;
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
+
+        User resUser = userMapper.getUserByEmailAndPassword(user);
+        if (resUser != null) {
+            return resUser;
+        } else {
             return null;
         }
+
     }
 }

@@ -38,7 +38,7 @@ const categoryService = new Vue({
                             color: item.color.replace(/\s/g, '') // Remove any spaces from the color code
                         }));
                     } else {
-                        this.showMessage('信息获取失败:', false);
+                        this.showMessage('信息获取失败(' + response.msg + ')', false);
                     }
                 });
         },
@@ -83,7 +83,7 @@ const categoryService = new Vue({
                         this.cancelAddCategory();
                         this.getCategoryList();
                     } else {
-                        this.showMessage('创建失败: ' + response.msg, false);
+                        this.showMessage('创建失败(' + response.msg + ')', false);
                     }
                 });
         },
@@ -110,7 +110,7 @@ const categoryService = new Vue({
                         // Optionally, you can refresh the category list to reflect changes
                         this.getCategoryList();
                     } else {
-                        this.showMessage('修改失败: ' + response.msg, false);
+                        this.showMessage('修改失败(' + response.msg + ')', false);
                     }
                 });
         },
@@ -131,7 +131,7 @@ const categoryService = new Vue({
                         this.categoryList = this.categoryList.filter(category => category.categoryid !== item.categoryid);
                         this.getCategoryList();
                     } else {
-                        this.showMessage('删除失败: ' + response.msg, false);
+                        this.showMessage('删除失败(' + response.msg + ')', false);
                     }
                 });
 

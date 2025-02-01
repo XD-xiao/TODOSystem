@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-
 @RestController
 public class UserController {
 
@@ -29,11 +28,9 @@ public class UserController {
 
         User user = new User(userRequest.getUsername(), userRequest.getEmail(), userRequest.getPassword(), userRequest.getPicid(), LocalDateTime.now());
 
-        if (userService.register(user)) {
-            return Result.success( "注册成功");
-        } else {
-            return  Result.error("注册失败");
-        }
+        userService.register(user);
+        return Result.success( "注册成功");
+
     }
 
     @PostMapping("/logoff")
@@ -46,11 +43,9 @@ public class UserController {
             return Result.error("权限不足");
         }
 
-        if (userService.delete(userRequest.getId())) {
-            return Result.success("注销成功");
-        } else {
-            return Result.error("注销失败");
-        }
+        userService.delete(userRequest.getId());
+        return Result.success("注销成功");
+
     }
 
     @PostMapping("/update")
@@ -66,11 +61,9 @@ public class UserController {
 
         User user = new User(userRequest.getId(), userRequest.getUsername(), userRequest.getEmail(), userRequest.getPassword(), userRequest.getPicid(), userRequest.getCreatetime());
 
-        if (userService.update(user)) {
-            return Result.success( "修改成功");
-        } else {
-            return Result.error("修改失败");
-        }
+        userService.update(user);
+        return Result.success( "修改成功");
+
     }
 
     @PostMapping("/getUserById")
